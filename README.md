@@ -2,6 +2,60 @@
 
 Generator for websites based on Node.js.
 
+# Usage
+
+Compile index.md using [marked](https://github.com/chjj/marked):
+
+```js
+var mkweb = require('mkweb');
+mkweb.make('index.md', 'index.html');
+```
+
+Compile index.md into an [ejs](https://github.com/visionmedia/ejs)-based layout template with an external scope:
+
+```js
+mkweb.make('index.md', 'index.html', { layout: 'main.ejs', scope: 'scope.js' });
+```
+
+# Compilers
+
+Compilers transform input into a different format. The following compilers are included in mkweb:
+
+* md: [marked](https://github.com/chjj/marked)
+* ejs: [ejs](https://github.com/visionmedia/ejs)
+
+You can create your own compiler:
+
+```js
+mkweb.registerCompiler('myextension', function (content, scope, callback) {
+  // your compiler code...
+  callback(null, transformedContent);
+});
+```
+
+The extension string defines, which compiler is used for any given input file.
+
+# Recipes
+
+Recipes drive the process to generate a website. The default recipe takes the given input file, compiles it, and applies a scope and template if given.
+
+You can create your own recipe:
+
+```js
+mkweb.registerRecipe('myRecipe', function (input, options, callback) {
+  // your recipe code...
+  callback(err, result);
+});
+```
+
+Inside your recipe, you can compile a file using a registered compiler:
+
+```js
+mkweb.compile(input, scope);
+```
+
+Take a look at the [default recipe](https://github.com/jdiehl/mkweb/blob/master/recipes/default.js) for a working example.
+
 # License
 
 Copyright 2014, Jonathan Diehl

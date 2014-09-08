@@ -10,7 +10,11 @@ mkweb.registerRecipe('default', function (input, options, callback) {
   function loadScope(done) {
     var scope = {};
     if (options.scope) {
-      scope = require(path.join(process.cwd(), 'scopes', options.scope));
+      if (typeof options.scope === 'string') {
+        scope = require(path.join(process.cwd(), 'scopes', options.scope));
+      } else {
+        scope = options.scope;
+      }
     }
     done(null, scope);
   }
