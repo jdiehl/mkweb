@@ -8,13 +8,17 @@ Compile index.md using [marked](https://github.com/chjj/marked):
 
 ```js
 var mkweb = require('mkweb');
-mkweb.make('index.md', 'index.html');
+mkweb.make('index.md', function (error, result) {
+  // process result
+});
 ```
 
 Compile index.md into an [ejs](https://github.com/visionmedia/ejs)-based layout template with an external scope:
 
 ```js
-mkweb.make('index.md', 'index.html', { layout: 'main.ejs', scope: 'scope.js' });
+mkweb.make('index.md', { layout: 'main.ejs', scope: 'scope.js' }, function (error, result) {
+  // process result
+});
 ```
 
 # Compilers
@@ -29,7 +33,7 @@ You can create your own compiler:
 ```js
 mkweb.registerCompiler('myextension', function (content, scope, callback) {
   // your compiler code...
-  callback(null, transformedContent);
+  callback(null, result);
 });
 ```
 
@@ -46,13 +50,15 @@ mkweb.registerRecipe('myRecipe', function (input, options, callback) {
   // your recipe code...
   callback(err, result);
 });
-mkweb.make('index.md', 'index.html', { recipe: 'myRecipe' });
+mkweb.make('index.md', { recipe: 'myRecipe' }, callback);
 ```
 
 Inside your recipe, you can compile a file using a registered compiler:
 
 ```js
-mkweb.compile(input, scope);
+mkweb.compile(input, scope, function (error, result) {
+  // process result
+});
 ```
 
 Take a look at the [default recipe](https://github.com/jdiehl/mkweb/blob/master/recipes/default.js) for a working example.
