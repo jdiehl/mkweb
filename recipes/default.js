@@ -17,6 +17,9 @@ mkweb.registerRecipe('default', function (input, options, callback) {
         scope = options.scope;
       }
     }
+    if (typeof scope === 'function') {
+      scope = scope(input, options);
+    }
     done(null, extend({}, scope));
   }
 
