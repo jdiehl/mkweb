@@ -46,6 +46,7 @@ mkweb.registerRecipe('myRecipe', function (input, options, callback) {
   // your recipe code...
   callback(err, result);
 });
+mkweb.make('index.md', 'index.html', { recipe: 'myRecipe' });
 ```
 
 Inside your recipe, you can compile a file using a registered compiler:
