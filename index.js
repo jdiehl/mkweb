@@ -3,6 +3,7 @@
 // load bundled compilers
 require('./compilers/ejs');
 require('./compilers/marked');
+require('./compilers/mustache');
 
 // load bundled recipes
 require('./recipes/default');
