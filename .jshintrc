@@ -80,5 +80,5 @@
   "mocha"         : true,     // Mocha
 
   // Custom Globals
-  "predef"       : [ "sinon", "expect" ]
+  "predef"       : []
 }
