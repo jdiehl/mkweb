@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jdiehl/mkweb.svg)](https://travis-ci.org/jdiehl/mkweb)
+
 # Make the web!
 
 Generator for websites based on Node.js.
