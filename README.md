@@ -25,8 +25,11 @@ mkweb.make('index.md', { layout: 'main.ejs', scope: 'scope.js' }, function (erro
 
 Compilers transform input into a different format. The following compilers are included in mkweb:
 
-* md: [marked](https://github.com/chjj/marked)
 * ejs: [ejs](https://github.com/visionmedia/ejs)
+* handlebars: [handlebars](https://github.com/wycats/handlebars.js)
+* jade [jade](https://github.com/visionmedia/jade)
+* md: [marked](https://github.com/chjj/marked)
+* mustache: [mustache](https://github.com/janl/mustache.js)
 
 You can create your own compiler:
 
