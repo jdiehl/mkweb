@@ -4,7 +4,9 @@
   "description": "Make the web!",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -28,12 +30,14 @@
     "handlebars": "^2.0.0",
     "jade": "^1.6.0",
     "marked": "^0.3.2",
-    "mustache": "^0.8.2"
+    "mustache": "^0.8.2",
+    "snyk": "^1.46.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
     "mocha": "^1.21.4",
     "mock-fs": "^2.3.1",
     "sinon": "^1.10.3"
-  }
+  },
+  "snyk": true
 }
