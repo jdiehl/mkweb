@@ -2,15 +2,17 @@
 
 var expect = require('chai').expect,
   mockfs = require('mock-fs'),
+  mock = require('mock-require'),
+  path = require('path'),
   mkweb = require('../index');
 
 describe('#compilers/ejs', function () {
 
   beforeEach(function () {
     mockfs({
-      'compilers-ejs-scope.js': 'exports.something = "world"',
       'fake.ejs': 'Hello <%= something %>'
     });
+    mock(path.resolve('./compilers-ejs-scope.js'), { something: 'world' })
   });
 
   afterEach(function () {

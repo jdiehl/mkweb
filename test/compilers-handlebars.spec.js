@@ -2,15 +2,17 @@
 
 var expect = require('chai').expect,
   mockfs = require('mock-fs'),
+  mock = require('mock-require'),
+  path = require('path'),
   mkweb = require('../index');
 
 describe('#compilers/handlebars', function () {
 
   beforeEach(function () {
     mockfs({
-      'compilers-handlebars-scope.js': 'exports.something = "world"',
       'fake.handlebars': 'Hello {{something}}'
     });
+    mock(path.resolve('./compilers-handlebars-scope.js'), { something: 'world' })
   });
 
   afterEach(function () {

@@ -2,15 +2,17 @@
 
 var expect = require('chai').expect,
   mockfs = require('mock-fs'),
+  mock = require('mock-require'),
+  path = require('path'),
   mkweb = require('../index');
 
 describe('#compilers/mustache', function () {
 
   beforeEach(function () {
     mockfs({
-      'compilers-mustache-scope.js': 'exports.something = "world"',
       'fake.mustache': 'Hello {{something}}'
     });
+    mock(path.resolve('./compilers-mustache-scope.js'), { something: 'world' })
   });
 
   afterEach(function () {

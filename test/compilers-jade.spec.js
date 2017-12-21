@@ -2,15 +2,17 @@
 
 var expect = require('chai').expect,
   mockfs = require('mock-fs'),
+  mock = require('mock-require'),
+  path = require('path'),
   mkweb = require('../index');
 
 describe('#compilers/jade', function () {
 
   beforeEach(function () {
     mockfs({
-      'compilers-jade-scope.js': 'exports.something = "world"',
       'fake.jade': 'p Hello #{something}'
     });
+    mock(path.resolve('./compilers-jade-scope.js'), { something: 'world' })
   });
 
   afterEach(function () {

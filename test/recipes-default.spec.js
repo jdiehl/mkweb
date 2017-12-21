@@ -2,21 +2,24 @@
 
 var expect = require('chai').expect,
   mockfs = require('mock-fs'),
-  mkweb = require('../index');
+  mkweb = require('../index'),
+  mock = require('mock-require'),
+  path = require('path');
 
 describe('#recipes/default', function () {
 
-  beforeEach(function () {
+  before(function () {
     mockfs({
-      'recipes-default-scope.js': 'exports.foo = "bar"',
       'layout.spy': 'fake-layout',
       'fake.spy': 'fake',
       'fake.html': 'fake-html'
     });
+    mock(path.resolve('./recipes-default-scope.js'), { foo: 'bar' })
   });
 
-  afterEach(function () {
+  after(function () {
     mockfs.restore();
+    mock.stopAll();
   });
 
   it('should load a scope', function (done) {
