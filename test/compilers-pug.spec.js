@@ -6,21 +6,21 @@ var expect = require('chai').expect,
   path = require('path'),
   mkweb = require('../index');
 
-describe('#compilers/jade', function () {
+describe('#compilers/pug', function () {
 
   beforeEach(function () {
     mockfs({
-      'fake.jade': 'p Hello #{something}'
+      'fake.pug': 'p Hello #{something}'
     });
-    mock(path.resolve('./compilers-jade-scope.js'), { something: 'world' })
+    mock(path.resolve('./compilers-pug-scope.js'), { something: 'world' })
   });
 
   afterEach(function () {
     mockfs.restore();
   });
 
-  it('should parse an jade template', function (done) {
-    mkweb.make('fake.jade', { scope: 'compilers-jade-scope.js' }, function (err, result) {
+  it('should parse an pug template', function (done) {
+    mkweb.make('fake.pug', { scope: 'compilers-pug-scope.js' }, function (err, result) {
       expect(err).to.equal(null);
       expect(result).to.equal('<p>Hello world</p>');
       done();

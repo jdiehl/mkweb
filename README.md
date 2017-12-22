@@ -29,7 +29,7 @@ Compilers transform input into a different format. The following compilers are i
 
 * ejs: [ejs](https://github.com/visionmedia/ejs)
 * handlebars: [handlebars](https://github.com/wycats/handlebars.js)
-* jade [jade](https://github.com/visionmedia/jade)
+* pug: [pug](https://pugjs.org)
 * md: [marked](https://github.com/chjj/marked)
 * mustache: [mustache](https://github.com/janl/mustache.js)
 
